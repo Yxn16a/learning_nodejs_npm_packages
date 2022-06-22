@@ -30,7 +30,11 @@ const server = http.createServer((req, res) => {
         // in it
         res.end(JSON.stringify({
             id: 1,
-            name: 'sir Isac Newton'
+            name: 'sir Isac Newton',
+            id: 2,
+            name: 'sir Isac Newton',
+            id: 3,
+            name: 'sir Isac Newton',
         }))
     } else if (req.url === '/messages') {
         // this will help with wrtiting html peace by peace
