@@ -10,12 +10,13 @@ function getMessages(req, res) {
     // currently __dirname is pointing to the controller
     // folder where this calling file lives
     res.send('.')
-    res.sendFile(path.join(__dirname,'public','images','alps.jpg'));
+    res.sendFile(path.join(__dirname,'public', 'images', 'alps.jpg'));
+    // /Users/yvesngenzi/Documents/nodeJsNpmPackages/modelViewController/public
     // if we want to send  file to the user we can use 
     // the following function
 
     //res.send('<ul><li>Hell albert!</li></ul>')
-     //not sending 
+    //not sending 
     // this now
 }
 
