@@ -3,7 +3,7 @@
 const express = require('express');
 // this shows that this file is coming from the planets 
 const {
-    httpGetAllPlanets,
+    httpGetAllPlanets
  } = require('./planets.controller')
 const planetsRouter = express.Router(); 
 planetsRouter.get('/planets', httpGetAllPlanets); 

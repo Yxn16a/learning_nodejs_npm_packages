@@ -18,7 +18,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(planetsRouter);
-app.use(launchesRouter);
+app.use('/launches',launchesRouter);
 // this star goes to find other matching end points in index.html 
 // if it is not found in the route
 //app.get('/*',(req,res)=>{
