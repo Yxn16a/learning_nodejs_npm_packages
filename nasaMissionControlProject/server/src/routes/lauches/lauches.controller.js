@@ -1,7 +1,9 @@
 // This is business logic 
 const {
     getAllLaunches,
-    AddNewLaunch
+    AddNewLaunch,
+    existsLaunchWithId,
+    abortLaunchById
 } = require('../../models/launches.model')
 
 function httpGetAllLaunches(req, res) {
@@ -14,7 +16,7 @@ function httpAddNewLaunch(req, res) {
     const launch = req.body;
     // this will convert th 
     if (!launch.mission || !launch.rocket || !launch.launchDate ||
-        !launch.destination) {
+        !launch.target) {
         // 404 not fund
         return res.status(400).json({
             erro: "Missing required launch property",
@@ -32,7 +34,19 @@ function httpAddNewLaunch(req, res) {
     AddNewLaunch(launch);
     return res.status(201).json(launch);
 }
+
+function httpAbortLaunch(req, res) {
+    const launchId = Number(req.params.id);
+    if (!existsLaunchWithId(launchId)) {
+        return res.status(404).json({
+            error: 'Launch not found',
+        })
+    }
+    const aborted = abortLaunchById(launchId);
+    return res.status(200).json(aborted)
+}
 module.exports = {
     httpGetAllLaunches,
-    httpAddNewLaunch
+    httpAddNewLaunch,
+    httpAbortLaunch
 }

@@ -44,7 +44,7 @@ function loadPlanetsData() {
                 // returns each row as a key value pairs
                 columns: true
             }))
-            .on('data', (data) => {
+            .on('data', async (data) => {
                 // are going to push the data that comes in to the created array
                 // let us add only a habitable planet
                 if (ishabitable(data)) {
@@ -57,7 +57,7 @@ function loadPlanetsData() {
                 reject(err); 
             })
             // these are events handlers
-            .on('end', async () => {
+            .on('end',() => {
                 // lets us now look at the names of the obtained planet
                 // especially those habbitable ones
                 // NO NEED TO LOG OUR RESULT BECAUSE WE CAN DO THAT IN API
@@ -65,9 +65,15 @@ function loadPlanetsData() {
                 //     // filtering name
                 //     return planet['kepler_name'];
                 // }))
-                const countPlanetsFound = habitableplanet.length; 
+            
+                const countPlanetsFound =  habitableplanet.length;
                 console.log(`${countPlanetsFound} habitable planets found!`);
                 resolve();
+
+
+                // const countPlanetsFound = habitableplanet.length; 
+                // console.log(`${countPlanetsFound} habitable planets found!`);
+                // resolve();
                 // console.log(`${habitableplanet.length} habitable planet found! `);
                 // // resolve is only called when the data have already loaded
                 // // we do not add anything in resolve because we have 
@@ -76,8 +82,8 @@ function loadPlanetsData() {
             });
     });
 }
-function getAllplanets() { 
-    return habitableplanet; 
+async function getAllplanets() { 
+    return habitableplanet ; 
 }
 
 module.exports = {
